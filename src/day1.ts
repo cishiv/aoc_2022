@@ -66,6 +66,7 @@ const day_one_golf = () => {
     console.timeEnd("day_one_golf");
   });
 }
+
 console.time("day_one");
 day_one();
 console.timeEnd("day_one");
