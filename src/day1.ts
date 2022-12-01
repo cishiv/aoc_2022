@@ -1,5 +1,5 @@
 import { readInput, readInputSync } from "./utils/reader";
-// initial solution
+
 const dayOne = () => {
   console.time("day_one");
   const input = readInputSync(1).split("\n");
@@ -26,7 +26,6 @@ const dayOne = () => {
   console.timeEnd("day_one");
 }
 
-// perf (?) solution
 const dayOnePerf = async () => {
   readInput(1, (err: NodeJS.ErrnoException | null, data: string) => {
     console.time("day_one_perf");
@@ -50,7 +49,6 @@ const dayOnePerf = async () => {
     console.timeEnd("day_one_perf");
   });
 }
-
 
 const dayOneGolf = () => {
   readInput(1, (_: NodeJS.ErrnoException | null, data: string) => {
