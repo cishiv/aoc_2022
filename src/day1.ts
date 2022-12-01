@@ -49,10 +49,28 @@ const day_one_perf = async () => {
   });
 }
 
+
+const day_one_golf = () => {
+  readInput(1, (_: NodeJS.ErrnoException | null, data: string) => {
+    console.time("day_one_golf");
+
+    const maximums = data.split("\n\n")
+    .map((subarray: string) => subarray.split("\n")
+    .map((line: string) => Number(line))
+    .reduce((a: number, b: number) => a + b))
+    .sort((a: number, b: number) => b - a);
+
+    console.log("Part 1", maximums[0]);
+    console.log("Part 2", maximums.slice(0,3).reduce((a: number, b: number) => a + b));
+
+    console.timeEnd("day_one_golf");
+  });
+}
 console.time("day_one");
 day_one();
 console.timeEnd("day_one");
 
 day_one_perf();
+day_one_golf();
 
 export {};
