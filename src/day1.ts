@@ -1,6 +1,4 @@
 import { readInput, readInputSync } from "./utils/reader";
-const fs = require("fs");
-
 // initial solution
 const day_one = () => {
   const input = readInputSync(1).split("\n");
