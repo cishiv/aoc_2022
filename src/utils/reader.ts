@@ -5,3 +5,6 @@ export const readInputSync = (day: number) => {
   return input;
 };
 
+export const readInput = (day: number, callback: any) => {
+  return fs.readFile(`inputs/day-${day}`, 'utf8', callback);
+};

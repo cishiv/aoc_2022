@@ -1,5 +1,7 @@
-import { readInputSync } from "./utils/reader";
+import { readInput, readInputSync } from "./utils/reader";
+const fs = require("fs");
 
+// initial solution
 const day_one = () => {
   const input = readInputSync(1).split("\n");
   let elves = new Map<number, number>();
@@ -24,6 +26,35 @@ const day_one = () => {
   console.log("Part 2", partTwo);
 }
 
+// perf (?) solution
+const day_one_perf = async () => {
+  readInput(1, (err: NodeJS.ErrnoException | null, data: string) => {
+    console.time("day_one_perf");
+    if (err) {
+      console.error(err);
+      return;
+    }
+    let maximums: number[] = [];
+    let currentElf = 0;
+    data.split("\n").forEach((line: string) => {
+      if (line === "") {
+        maximums.push(currentElf);
+        currentElf = 0;
+      } else {
+        currentElf += Number(line);
+      }
+    });
+    console.log("Part 1", Math.max(...maximums));
+    console.log("Part 2", [...maximums].sort((a, b) => b - a).slice(0,3).reduce((a, b) => a + b));
+
+    console.timeEnd("day_one_perf");
+  });
+}
+
+console.time("day_one");
 day_one();
+console.timeEnd("day_one");
+
+day_one_perf();
 
 export {};
