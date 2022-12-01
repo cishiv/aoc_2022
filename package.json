@@ -1,7 +1,8 @@
 {
   "name": "aoc_2022",
   "scripts": {
-    "day1": "tsc && node dist/day1.js"
+    "day1": "tsc && node dist/day1.js",
+    "bun-day1": "tsc && bun run dist/day1.js"
   },
   "license": "MIT",
   "private": true,
