@@ -1,6 +1,7 @@
 import { readInput, readInputSync } from "./utils/reader";
 // initial solution
-const day_one = () => {
+const dayOne = () => {
+  console.time("day_one");
   const input = readInputSync(1).split("\n");
   let elves = new Map<number, number>();
   let currentElf = 0;
@@ -22,10 +23,11 @@ const day_one = () => {
   const partTwo = [...elves.values()].sort((a, b) => b - a).slice(0,3).reduce((a, b) => a + b);
   console.log("Part 1", Math.max(...elves.values()));
   console.log("Part 2", partTwo);
+  console.timeEnd("day_one");
 }
 
 // perf (?) solution
-const day_one_perf = async () => {
+const dayOnePerf = async () => {
   readInput(1, (err: NodeJS.ErrnoException | null, data: string) => {
     console.time("day_one_perf");
     if (err) {
@@ -50,7 +52,7 @@ const day_one_perf = async () => {
 }
 
 
-const day_one_golf = () => {
+const dayOneGolf = () => {
   readInput(1, (_: NodeJS.ErrnoException | null, data: string) => {
     console.time("day_one_golf");
 
@@ -67,11 +69,8 @@ const day_one_golf = () => {
   });
 }
 
-console.time("day_one");
-day_one();
-console.timeEnd("day_one");
-
-day_one_perf();
-day_one_golf();
+dayOne();
+dayOnePerf();
+dayOneGolf();
 
 export {};
