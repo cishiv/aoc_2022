@@ -64,6 +64,47 @@ const dayTwo = async () => {
   });
 }
 
-dayTwo();
+const dayTwoLookupTable = async () => {
+  readInput(2, (_err0: any, data: string) => {
+    console.time("day_two_lookup_table");
+    let scorePartOne = 0;
+    let scorePartTwo = 0;
+    const lines = data.split("\n");
+    const lookupTable: any = {
+      "A X": 1 + 3,
+      "A Y": 2 + 6,
+      "A Z": 3 + 0,
+      "B X": 1 + 0,
+      "B Y": 2 + 3,
+      "B Z": 3 + 6,
+      "C X": 1 + 6,
+      "C Y": 2 + 0,
+      "C Z": 3 + 3,
+    };
 
+    const lookupTablePartTwo: any = {
+      "A X": 3 + 0,
+      "A Y": 1 + 3,
+      "A Z": 2 + 6,
+      "B X": 1 + 0,
+      "B Y": 2 + 3,
+      "B Z": 3 + 6,
+      "C X": 2 + 0,
+      "C Y": 3 + 3,
+      "C Z": 1 + 6,
+    };
+
+    lines.forEach((line: string) => {
+      scorePartOne += lookupTable[line];
+      scorePartTwo += lookupTablePartTwo[line];
+    });
+
+    console.log("Part 1", scorePartOne);
+    console.log("Part 2", scorePartTwo);
+    console.timeEnd("day_two_lookup_table");
+  });
+}
+
+dayTwo();
+dayTwoLookupTable();
 export {};
