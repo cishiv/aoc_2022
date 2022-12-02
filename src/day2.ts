@@ -1,20 +1,24 @@
 import { mod } from "./utils/math";
 import { readInput } from "./utils/reader";
 
+type Result = {
+  p1: number;
+  p2: number;
+}
 const dayTwoModGolf = async () => {
   readInput(2, (_: any, d: string) => {
     console.time("day_two_golf_mod");
-    const r = d.split("\n")
-    .map((l: any) => 
-      l.split(" ").map((c: any) => c === "A" || c === "X" ? 0 : c === "B" || c === "Y" ? 1 : 2)
+    const r: Result = d.split("\n")
+    .map((l: string) => 
+      l.split(" ").map((c: string) => c === "A" || c === "X" ? 0 : c === "B" || c === "Y" ? 1 : 2)
     )
-    .map((t: any) => {
+    .map((t: number[]) => {
       return {
-        p1: (2 - mod(t[0] - t[1] + 1, 3)) * 3 + t[1] + 1,
+        p1: t[1] + 1 + (2 - mod(t[0] - t[1] + 1, 3)) * 3,
         p2: t[1] * 3 + mod(t[0] + t[1] - 1, 3) + 1
       }
     })
-    .reduce((a: any, g: any) => {
+    .reduce((a: Result, g: Result) => {
       a.p1 += g.p1;
       a.p2 += g.p2;
       return a;
