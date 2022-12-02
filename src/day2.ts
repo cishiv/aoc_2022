@@ -1,4 +1,4 @@
-import { readInput, readInputByLine } from "./utils/reader";
+import { readInput } from "./utils/reader";
 
 const dayTwo = async () => {
   const loseConditions = ["A Z", "B X", "C Y"];
@@ -57,7 +57,7 @@ const dayTwo = async () => {
         scorePartOne += 6;
       }
     });
-    
+
     console.log("Part 1", scorePartOne);
     console.log("Part 2", scorePartTwo);
     console.timeEnd("day_two");
