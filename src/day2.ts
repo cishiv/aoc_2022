@@ -1,6 +1,6 @@
 import { readInput } from "./utils/reader";
 
-const dayTwo = async () => {
+const dayTwo = () => {
   const loseConditions = ["A Z", "B X", "C Y"];
   const tieConditions = ["A X", "B Y", "C Z"];
   readInput(2, (_err0: any, data: string) => {
@@ -64,7 +64,7 @@ const dayTwo = async () => {
   });
 }
 
-const dayTwoLookupTable = async () => {
+const dayTwoLookupTable = () => {
   readInput(2, (_err0: any, data: string) => {
     console.time("day_two_lookup_table");
     let scorePartOne = 0;
@@ -105,6 +105,34 @@ const dayTwoLookupTable = async () => {
   });
 }
 
+const dayTwoGolf = () => {
+  readInput(2, (_: any, d: string) => {
+    console.time("day_two_golf");
+    const r = d.split("\n")
+    .map((l: any) => {
+      return {
+        p1:
+          (l === "A X") ? 4 : (l === "A Y") ? 8 : (l === "A Z") ? 3 :
+          (l === "B X") ? 1 : (l === "B Y") ? 5 : (l === "B Z") ? 9 :
+          (l === "C X") ? 7 : (l === "C Y") ? 2 : (l === "C Z") ? 6 :
+          0,
+          p2:
+          (l === "A X") ? 3 : (l === "A Y") ? 4 : (l === "A Z") ? 8 :
+          (l === "B X") ? 1 : (l === "B Y") ? 5 : (l === "B Z") ? 9 :
+          (l === "C X") ? 2 : (l === "C Y") ? 6 : (l === "C Z") ? 7 :
+          0,
+      }
+    }).reduce((a: any, g: any) => {
+      a.p1 += g.p1;
+      a.p2 += g.p2;
+      return a;
+    }, { p1: 0, p2: 0 });
+    console.log("p1", r.p1, "p2", r.p2);
+    console.timeEnd("day_two_golf");
+  });
+}
+
 dayTwo();
 dayTwoLookupTable();
+dayTwoGolf();
 export {};
