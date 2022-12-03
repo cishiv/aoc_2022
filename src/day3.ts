@@ -120,11 +120,6 @@ const dayThreeMaps = () => {
 
   });
 }
-
-// const s1: Set<string> = new Set(parts[0]);
-// const s2: Set<string> = new Set(parts[1]);
-// let intersect = new Set([...s1].filter(x => s2.has(x))); 
-// return [...intersect.values()].map((item: string) => asciiToPriority(item)).reduce((a: number, b: number) => a + b, 0);;
 const asciiToPriority = (char: string) => {
   const asciiCode = char.charCodeAt(0);
   if (asciiCode >= 65 && asciiCode <= 90) {
