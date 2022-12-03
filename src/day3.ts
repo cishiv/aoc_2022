@@ -1,4 +1,5 @@
 import { readFile } from "fs";
+import { partition } from "./utils/arrays";
 
 type Instance = {
   firstIndex: number;
@@ -68,8 +69,6 @@ const dayThree = () => {
                 secondIndex: found.secondIndex,
                 thirdIndex: idx
               });
-            } else if (found.firstIndex && found.secondIndex) {
-              console.log("wtaf", combined.combined, combined.p1L);
             }
           } else {
             occurences.set(item, {
@@ -104,12 +103,6 @@ const asciiToPriority = (char: string) => {
   }
 }
 
-const partition = (array: string[], n: number): string[][] => {
-  return array.length ? [array.splice(0, n)].concat(partition(array, n)) : [];
-} 
-
 dayThree();
 
 export {};
-
-// BbVRzMcpbMNMHMTJmWdljdlJjTGtsqFnfvGSFqGfQvgnWWZlLlLjZWtWldPmlTsSsFqsqsGghwQQmfGRHbbVczbwwBpBpHcw
