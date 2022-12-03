@@ -78,7 +78,7 @@ const dayThree = () => {
         });
         return occurences;
       })
-      .map((rucksack: Map<string, Instance>, index) => {
+      .map((rucksack: Map<string, Instance>) => {
         let priority = 0;
         rucksack.forEach((instance: Instance, item: string) => {
           if (instance.secondIndex && instance.thirdIndex) {
