@@ -9,7 +9,34 @@ type Instance = {
 
 const dayThree = () => {
   readFile("inputs/day-3", "utf8", (_, data) => {
+    const lines = data.split("\n");
     console.time("day_three_part_one");
+    const partOne = lines
+      .map((rucksack: string) => partition(rucksack.split(""), rucksack.length / 2))
+      .map((partitions: string[][]) => [...new Set([...new Set(partitions[0])]
+                                        .filter(x => new Set(partitions[1]).has(x)))]
+                                        .map((item: string) => asciiToPriority(item))
+                                        .reduce((a: number, b: number) => a + b, 0))
+      .reduce((a: number, b: number) => a + b, 0);
+    console.log("Part One", partOne);
+    console.timeEnd("day_three_part_one");
+
+    console.time("day_three_part_two");
+    const partTwo = partition(lines, 3)
+    .map((combined: string[]) => [...new Set([...new Set([...combined[0]])]
+                                .filter(x => new Set([...combined[1]]).has(x) && new Set([...combined[2]]).has(x))
+                                .map((item: string) => asciiToPriority(item)))]
+                                .reduce((a: number, b: number) => a + b, 0))
+    .reduce((a: number, b: number) => a + b, 0);
+
+    console.log("Part Two", partTwo);
+    console.timeEnd("day_three_part_two");
+  });
+}
+
+const dayThreeMaps = () => {
+  readFile("inputs/day-3", "utf8", (_, data) => {
+    console.time("day_three_part_one_maps");
     const partOne = data
       .split("\n")
       .map((rucksack: string) => {
@@ -40,9 +67,9 @@ const dayThree = () => {
         return priority;
       }).reduce((a: number, b: number) => a + b, 0);;
     console.log("Part One", partOne);
-    console.timeEnd("day_three_part_one");
+    console.timeEnd("day_three_part_one_maps");
 
-    console.time("day_three_part_two");
+    console.time("day_three_part_two_maps");
     const partTwo = partition(data.split("\n"), 3)
       .map((combined: string[]) => {
         return {
@@ -89,11 +116,15 @@ const dayThree = () => {
       })
       .reduce((a: number, b: number) => a + b, 0);
     console.log("Part Two", partTwo);
-    console.timeEnd("day_three_part_two");
+    console.timeEnd("day_three_part_two_maps");
 
   });
 }
 
+// const s1: Set<string> = new Set(parts[0]);
+// const s2: Set<string> = new Set(parts[1]);
+// let intersect = new Set([...s1].filter(x => s2.has(x))); 
+// return [...intersect.values()].map((item: string) => asciiToPriority(item)).reduce((a: number, b: number) => a + b, 0);;
 const asciiToPriority = (char: string) => {
   const asciiCode = char.charCodeAt(0);
   if (asciiCode >= 65 && asciiCode <= 90) {
@@ -103,6 +134,7 @@ const asciiToPriority = (char: string) => {
   }
 }
 
+dayThreeMaps();
 dayThree();
 
 export {};
