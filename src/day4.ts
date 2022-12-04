@@ -8,7 +8,7 @@ const dayFour = () => {
 				.split(",")
 				.map((opts: string) => opts
 					.split("-")
-					.map((n: string) => Number(n))));
+					.map(Number)));
 		console.time("day_four_part_1");
 		const partOne = nn.map((p: number[][]) => {
 			return (p[0][0] >= p[1][0] && p[0][1] <= p[1][1]) || (p[0][0] <= p[1][0] && p[0][1] >= p[1][1]) ? 1 : 0;
@@ -28,11 +28,3 @@ const dayFour = () => {
 
 dayFour();
 export {}
-
-// 5-7,7-9 
-// 2-8,3-7
-// 6-6,4-6
-// 2-6,4-8
-
-// 3-10, 5-15
-
