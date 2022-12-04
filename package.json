@@ -6,7 +6,9 @@
     "day2": "tsc && node dist/day2.js",
     "bun-day2": "tsc && bun run dist/day2.js",
     "day3": "tsc && node dist/day3.js",
-    "bun-day3": "tsc && bun run dist/day3.js"
+    "bun-day3": "tsc && bun run dist/day3.js",
+    "day4": "tsc && node dist/day4.js",
+    "bun-day4": "tsc && bun run dist/day4.js"
   },
   "license": "MIT",
   "private": true,
