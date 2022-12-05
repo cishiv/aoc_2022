@@ -50,18 +50,24 @@ const dayFive = () => {
 
 		// Part One
 		console.time("day_five_part_one");
-		out[1].split("\n").map((s: string) => s.split(/\s+/).filter((s: string) => s.length > 0 && !isNaN(parseInt(s))).map(Number)).forEach((i: number[]) => {
-			const fIdx = indexMap.get(i[1]);
-			const tIdx = indexMap.get(i[2]);
-			if (fIdx && tIdx) {
-				const f = partOneCrates.get(fIdx);
-				const t = partOneCrates.get(tIdx);
-				if (f && t) {
-					const toMove = f.splice(0, i[0]).filter((s: string) => s.length > 0).reverse();
-					t.unshift(...toMove);
+		out[1]
+			.split("\n")
+			.map((s: string) => s
+				.split(/\s+/)
+				.filter((s: string) => s.length > 0 && !isNaN(parseInt(s)))
+				.map(Number))
+			.forEach((i: number[]) => {
+				const fIdx = indexMap.get(i[1]);
+				const tIdx = indexMap.get(i[2]);
+				if (fIdx && tIdx) {
+					const f = partOneCrates.get(fIdx);
+					const t = partOneCrates.get(tIdx);
+					if (f && t) {
+						const toMove = f.splice(0, i[0]).filter((s: string) => s.length > 0).reverse();
+						t.unshift(...toMove);
+					}
 				}
-			}
-		});
+			});
     
 		const partOne = [...partOneCrates.values()].map((i) => i.length > 0 ? i.join("")[0] : [" "]).join("");
 		console.log("Part One", partOne);
@@ -69,18 +75,24 @@ const dayFive = () => {
     
 		// Part Two
 		console.time("day_five_part_two");
-		out[1].split("\n").map((s: string) => s.split(/\s+/).filter((s: string) => s.length > 0 && !isNaN(parseInt(s))).map(Number)).forEach((i: number[]) => {
-			const fIdx = indexMap.get(i[1]);
-			const tIdx = indexMap.get(i[2]);
-			if (fIdx && tIdx) {
-				const f = partTwoCrates.get(fIdx);
-				const t = partTwoCrates.get(tIdx);
-				if (f && t) {
-					const toMove = f.splice(0, i[0]).filter((s: string) => s.length > 0);
-					t.unshift(...toMove);
+		out[1]
+			.split("\n")
+			.map((s: string) => s
+				.split(/\s+/)
+				.filter((s: string) => s.length > 0 && !isNaN(parseInt(s)))
+				.map(Number))
+			.forEach((i: number[]) => {
+				const fIdx = indexMap.get(i[1]);
+				const tIdx = indexMap.get(i[2]);
+				if (fIdx && tIdx) {
+					const f = partTwoCrates.get(fIdx);
+					const t = partTwoCrates.get(tIdx);
+					if (f && t) {
+						const toMove = f.splice(0, i[0]).filter((s: string) => s.length > 0);
+						t.unshift(...toMove);
+					}
 				}
-			}
-		});
+			});
 
 		const partTwo = [...partTwoCrates.values()].map((i) => i.length > 0 ? i.join("")[0] : [" "]).join("");
 		console.log("Part Two", partTwo);
