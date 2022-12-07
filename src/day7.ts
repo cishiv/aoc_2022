@@ -68,7 +68,6 @@ const directorySize = (source: string, contents: string[], fileSystem: Map<strin
 	return size;
 }
 
-
 daySeven();
 
 export {}
