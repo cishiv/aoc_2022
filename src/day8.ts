@@ -28,19 +28,18 @@ const dayEight = () => {
 		console.time("dayEightTwo");
 		const partTwo = grid.map((row: number[], y: number) => {
 			return row.map((col: number, x: number) => {
-				const xLeft =  [...row.slice(0, x).map((i: number, j: number) => i)].reverse();
-				const xRight = [...row.slice(x + 1).map((i: number, j: number) => i)];
-				const xUp = [...grid.slice(0, y).map((i: number[], j: number) => i[x])].reverse();
-				const xDown = [...grid.slice(y + 1).map((i: number[], j: number) => i[x])];
+				const xLeft =  [...row.slice(0, x).map((i: number) => i)].reverse();
+				const xRight = [...row.slice(x + 1).map((i: number) => i)];
+				const xUp = [...grid.slice(0, y).map((i: number[]) => i[x])].reverse();
+				const xDown = [...grid.slice(y + 1).map((i: number[]) => i[x])];
 
 			  let xLeftSV = 0;
 				for(let i = 0; i < xLeft.length; i++) {
 					if(xLeft[i] >= col) {
 						xLeftSV++;
 						break;
-					} else {
-						xLeftSV++;
 					}
+					xLeftSV++;
 				}
 
 				let xRightSV = 0;
@@ -48,9 +47,8 @@ const dayEight = () => {
 					if(xRight[i] >= col) {
 						xRightSV++;
 						break;
-					} else {
-						xRightSV++;
 					}
+					xRightSV++;
 				}
 
 				let xUpSV = 0;
@@ -58,9 +56,8 @@ const dayEight = () => {
 					if(xUp[i] >= col) {
 						xUpSV++;
 						break;
-					} else {
-						xUpSV++;
 					}
+					xUpSV++;
 				}
 
 				let xDownSV = 0;
@@ -68,9 +65,8 @@ const dayEight = () => {
 					if(xDown[i] >= col) {
 						xDownSV++;
 						break;
-					} else {
-						xDownSV++;
 					}
+					xDownSV++;
 				}
 
 				return xLeftSV * xRightSV * xUpSV * xDownSV;
