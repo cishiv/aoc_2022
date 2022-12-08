@@ -1,7 +1,5 @@
 import { readInput } from "./utils/reader";
 
-type Tree = { x: number, y:number, value: number };
-
 const dayEight = () => {
 	readInput(8, (_: any, d: string) => {
 		const grid = d
