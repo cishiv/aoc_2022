@@ -2,6 +2,7 @@ import { readInput } from "./utils/reader";
 
 const daySeven = () => {
 	readInput(7, (_: any, d: string) => {
+		console.time("daySevenOne")
 		const input = d.split("\n");
 		const path: string[] = [];
 		const fileSystem = new Map<string, string[]>();
@@ -42,13 +43,16 @@ const daySeven = () => {
 		const partOne = sizes.sort((a, b) => b - a).filter((i, _) => i <= 100000).reduce((a, b) => a + b, 0);
 
 		console.log("Part One", partOne);
-    
+		console.timeEnd("daySevenOne");
+
+		console.time("daySevenTwo")
 		const TOTAL_SPACE_AVAILABLE = 70000000;
 		const REQUIRED_SPACE = 30000000;
 		const unusedSpace = TOTAL_SPACE_AVAILABLE -  sizes.sort((a, b) => b - a)[0];
 		const spaceToClear = REQUIRED_SPACE - unusedSpace;
 
 		console.log("Part Two", sizes.filter((i, _) => i >= spaceToClear).sort((a, b) => a - b)[0]);
+		console.timeEnd("daySevenTwo");
 	});
 
 }

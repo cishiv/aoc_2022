@@ -11,60 +11,18 @@ const dayEight = () => {
 				.map((j: string) => parseInt(j)))
   
 		console.time("dayEightOne")
-		const partOne: number = grid.map((row: number[], y: number) => {
-			return row.map((col: number, x: number) => {
-				const xLeft: Tree[] =  
-					[...row.slice(0, x).map((i: number, j: number) => {
-						return {
-							x: j,
-							y: y,
-							value: i
-						}
-					}),
-					].sort((a: any, b: any) => b.x - a.x);
 
-				const xRight: Tree[] = [
-					...row.slice(x + 1).map((i: number, j: number) => {
-						return {
-							x: j + (x + 1),
-							y: y,
-							value: i
-						}
-					}),
-				]
-          
-				const xUp: Tree[] = [
-					...grid.slice(0, y).map((i: number[], j: number) => {
-						return {
-							x: x,
-							y: j,
-							value: i[x]
-						}}),
-				].sort((a: any, b: any) => b.y - a.y);
-
-				const xDown: Tree[]= [
-					...grid.slice(y + 1).map((i: number[], j: number) => {
-						return {
-							x: x,
-							y: j + (y + 1),
-							value: i[x]
-						}}),
-				];
-
-				// if col is an edge, then it is visible
-				if (x === 0 || x === row.length - 1 || y === 0 || y === grid.length - 1) {
-					return 1;
-				} else if (
-					col > Math.max(...xDown.map((i: Tree) => i.value)) ||
-          col > Math.max(...xUp.map((i: Tree) => i.value)) ||
-          col > Math.max(...xLeft.map((i: Tree) => i.value)) ||
-          col > Math.max(...xRight.map((i: Tree) => i.value))) {
-					return 1;
-				} else {
-					return 0;
-				}
-			});
-		}).flat().filter((i: number) => i === 1).length;
+		const partOne: number = grid
+			.map((row: number[], y: number) => 
+			 row
+					.filter((col: number, x: number) => {
+						return (x === 0 || x === row.length - 1 || y === 0 || y === grid.length - 1) || 
+        (col > Math.max(...row.slice(0, x).map((i: number) => i)) ||
+        col >  Math.max(...row.slice(x + 1).map((i: number) => i)) ||
+        col > Math.max(...grid.slice(0, y).map((i: number[]) => i[x])) ||
+        col > Math.max(...grid.slice(y + 1).map((i: number[]) => i[x])))
+					})
+			).flat().length;
 
 		console.log("Part One", partOne);
 		console.timeEnd("dayEightOne");
@@ -72,47 +30,14 @@ const dayEight = () => {
 		console.time("dayEightTwo");
 		const partTwo = grid.map((row: number[], y: number) => {
 			return row.map((col: number, x: number) => {
-				const xLeft =  
-					[...row.slice(0, x).map((i: number, j: number) => {
-						return {
-							x: j,
-							y: y,
-							value: i
-						}
-					}),
-					].sort((a: any, b: any) => b.x - a.x);
-
-				const xRight = [
-					...row.slice(x + 1).map((i: number, j: number) => {
-						return {
-							x: j + (x + 1),
-							y: y,
-							value: i
-						}
-					}),
-				]
-          
-				const xUp = [
-					...grid.slice(0, y).map((i: number[], j: number) => {
-						return {
-							x: x,
-							y: j,
-							value: i[x]
-						}}),
-				].sort((a: any, b: any) => b.y - a.y);
-
-				const xDown = [
-					...grid.slice(y + 1).map((i: number[], j: number) => {
-						return {
-							x: x,
-							y: j + (y + 1),
-							value: i[x]
-						}}),
-				];
+				const xLeft =  [...row.slice(0, x).map((i: number, j: number) => i)].reverse();
+				const xRight = [...row.slice(x + 1).map((i: number, j: number) => i)];
+				const xUp = [...grid.slice(0, y).map((i: number[], j: number) => i[x])].reverse();
+				const xDown = [...grid.slice(y + 1).map((i: number[], j: number) => i[x])];
 
 			  let xLeftSV = 0;
 				for(let i = 0; i < xLeft.length; i++) {
-					if(xLeft[i].value >= col) {
+					if(xLeft[i] >= col) {
 						xLeftSV++;
 						break;
 					} else {
@@ -122,7 +47,7 @@ const dayEight = () => {
 
 				let xRightSV = 0;
 				for(let i = 0; i < xRight.length; i++) {
-					if(xRight[i].value >= col) {
+					if(xRight[i] >= col) {
 						xRightSV++;
 						break;
 					} else {
@@ -132,7 +57,7 @@ const dayEight = () => {
 
 				let xUpSV = 0;
 				for(let i = 0; i < xUp.length; i++) {
-					if(xUp[i].value >= col) {
+					if(xUp[i] >= col) {
 						xUpSV++;
 						break;
 					} else {
@@ -142,7 +67,7 @@ const dayEight = () => {
 
 				let xDownSV = 0;
 				for(let i = 0; i < xDown.length; i++) {
-					if(xDown[i].value >= col) {
+					if(xDown[i] >= col) {
 						xDownSV++;
 						break;
 					} else {
