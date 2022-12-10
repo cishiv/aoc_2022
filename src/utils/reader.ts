@@ -20,4 +20,4 @@ export const readInputByLine = async (day: number, callback: any) => {
 	rl.on('line', (line: string) => {
 		callback(line);
 	});
-}
+};

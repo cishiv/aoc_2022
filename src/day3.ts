@@ -32,7 +32,7 @@ const dayThree = () => {
 		console.log("Part Two", partTwo);
 		console.timeEnd("day_three_part_two");
 	});
-}
+};
 
 const dayThreeMaps = () => {
 	readFile("inputs/day-3", "utf8", (_, data) => {
@@ -76,7 +76,7 @@ const dayThreeMaps = () => {
 					p1L: combined[0].length,
 					p2L: combined[1].length,
 					combined: combined.join(""),
-				}
+				};
 			})
 			.map((combined: { p1L: number, p2L: number, combined: string }) => {
 				const occurences: Map<string, Instance> = new Map();
@@ -119,7 +119,7 @@ const dayThreeMaps = () => {
 		console.timeEnd("day_three_part_two_maps");
 
 	});
-}
+};
 const asciiToPriority = (char: string) => {
 	const asciiCode = char.charCodeAt(0);
 	if (asciiCode >= 65 && asciiCode <= 90) {
@@ -127,7 +127,7 @@ const asciiToPriority = (char: string) => {
 	} else {
 		return asciiCode - 96;
 	}
-}
+};
 
 dayThreeMaps();
 dayThree();

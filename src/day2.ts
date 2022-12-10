@@ -16,7 +16,7 @@ const dayTwoModGolf = async () => {
 				return {
 					p1: t[1] + 1 + (2 - mod(t[0] - t[1] + 1, 3)) * 3,
 					p2: t[1] * 3 + mod(t[0] + t[1] - 1, 3) + 1
-				}
+				};
 			})
 			.reduce((a: Result, g: Result) => {
 				a.p1 += g.p1;
@@ -26,7 +26,7 @@ const dayTwoModGolf = async () => {
 		console.log("p1", r.p1, "p2", r.p2);
 		console.timeEnd("day_two_golf_mod");
 	});
-}
+};
 
 const dayTwoLookupFP = async () => {
 	readInput(2, (_: any, d: string) => {
@@ -44,7 +44,7 @@ const dayTwoLookupFP = async () => {
           	(l === "B X") ? 1 : (l === "B Y") ? 5 : (l === "B Z") ? 9 :
           		(l === "C X") ? 2 : (l === "C Y") ? 6 : (l === "C Z") ? 7 :
           			0,
-				}
+				};
 			}).reduce((a: any, g: any) => {
 				a.p1 += g.p1;
 				a.p2 += g.p2;
@@ -53,7 +53,7 @@ const dayTwoLookupFP = async () => {
 		console.log("p1", r.p1, "p2", r.p2);
 		console.timeEnd("day_two_golf");
 	});
-}
+};
 
 const dayTwoLookupTable = async () => {
 	readInput(2, (_err0: any, data: string) => {
@@ -94,7 +94,7 @@ const dayTwoLookupTable = async () => {
 		console.log("Part 2", scorePartTwo);
 		console.timeEnd("day_two_lookup_table");
 	});
-}
+};
 
 const dayTwoIterative = async () => {
 	const loseConditions = ["A Z", "B X", "C Y"];
@@ -108,7 +108,7 @@ const dayTwoIterative = async () => {
 		lines.forEach((line: string) => {
 			const [opponent, player] = line.split(" ");
 			if (player === "X") {
-				scorePartOne += 1
+				scorePartOne += 1;
 				// part 2 logic
 				// select the losing condition that matches the opponent, and take the L (0 points)
 				if (opponent == "A") {
@@ -119,7 +119,7 @@ const dayTwoIterative = async () => {
 					scorePartTwo += 2;
 				}
 			} else if (player === "Y") {
-				scorePartOne += 2
+				scorePartOne += 2;
 
 				// part 2 logic
 				// make the same play as the opponent, and take the tie (3 points)
@@ -132,7 +132,7 @@ const dayTwoIterative = async () => {
 					scorePartTwo += 3;
 				}
 			} else {
-				scorePartOne += 3
+				scorePartOne += 3;
 				// part 2 logic
 				// make the winning play against the opponent, and take the win (6 points
 				scorePartTwo += 6;
@@ -158,7 +158,7 @@ const dayTwoIterative = async () => {
 		console.log("Part 2", scorePartTwo);
 		console.timeEnd("day_two");
 	});
-}
+};
 
 dayTwoIterative();
 dayTwoLookupTable();

@@ -24,7 +24,7 @@ const dayOne = () => {
 	console.log("Part 1", Math.max(...elves.values()));
 	console.log("Part 2", partTwo);
 	console.timeEnd("day_one");
-}
+};
 
 const dayOnePerf = async () => {
 	readInput(1, (err: NodeJS.ErrnoException | null, data: string) => {
@@ -48,7 +48,7 @@ const dayOnePerf = async () => {
 
 		console.timeEnd("day_one_perf");
 	});
-}
+};
 
 const dayOneGolf = () => {
 	readInput(1, (_: NodeJS.ErrnoException | null, data: string) => {
@@ -65,7 +65,7 @@ const dayOneGolf = () => {
 
 		console.timeEnd("day_one_golf");
 	});
-}
+};
 
 dayOne();
 dayOnePerf();

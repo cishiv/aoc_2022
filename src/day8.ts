@@ -6,9 +6,9 @@ const dayEight = () => {
 			.split("\n")
 			.map((i: string) => i
 				.split("")
-				.map((j: string) => parseInt(j)))
+				.map((j: string) => parseInt(j)));
   
-		console.time("dayEightOne")
+		console.time("dayEightOne");
 
 		const partOne: number = grid
 			.map((row: number[], y: number) => 
@@ -18,7 +18,7 @@ const dayEight = () => {
         (col > Math.max(...row.slice(0, x).map((i: number) => i)) ||
         col >  Math.max(...row.slice(x + 1).map((i: number) => i)) ||
         col > Math.max(...grid.slice(0, y).map((i: number[]) => i[x])) ||
-        col > Math.max(...grid.slice(y + 1).map((i: number[]) => i[x])))
+        col > Math.max(...grid.slice(y + 1).map((i: number[]) => i[x])));
 					})
 			).flat().length;
 
@@ -73,10 +73,10 @@ const dayEight = () => {
 			});
 		}).flat();
 		console.log("Part Two", Math.max(...partTwo));
-		console.timeEnd("dayEightTwo")
+		console.timeEnd("dayEightTwo");
 	});
-}
+};
 
 dayEight();
 
-export default {}
+export default {};

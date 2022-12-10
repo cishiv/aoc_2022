@@ -1,4 +1,4 @@
-import { readInput } from "./utils/reader"
+import { readInput } from "./utils/reader";
 
 // Faster
 const daySixIterative = () => {
@@ -48,7 +48,7 @@ const daySixIterative = () => {
 		console.log("Part Two", partTwo);
 		console.timeEnd("day_six_part_two_i");
 	});
-}
+};
 
 // More succint
 const daySixSets = () => {
@@ -62,7 +62,7 @@ const daySixSets = () => {
 				}
 			}
 			return -1;
-		}
+		};
 		console.time("day_six_part_one");
 		console.log("Part One", findMarker(d, 4));
 		console.timeEnd("day_six_part_one");
@@ -71,8 +71,8 @@ const daySixSets = () => {
 		console.log("Part Two", findMarker(d, 14));
 		console.timeEnd("day_six_part_two");
 	});
-}
+};
 
 daySixIterative();
 daySixSets();
-export {}
+export {};

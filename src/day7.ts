@@ -2,7 +2,7 @@ import { readInput } from "./utils/reader";
 
 const daySeven = () => {
 	readInput(7, (_: any, d: string) => {
-		console.time("daySevenOne")
+		console.time("daySevenOne");
 		const input = d.split("\n");
 		const path: string[] = [];
 		const fileSystem = new Map<string, string[]>();
@@ -34,10 +34,10 @@ const daySeven = () => {
 			}
 		}
 
-		const sizes: number[] = []
+		const sizes: number[] = [];
 		fileSystem.forEach((value, key) => {
-			const size = directorySize(key, value, fileSystem)
-			sizes.push(size)
+			const size = directorySize(key, value, fileSystem);
+			sizes.push(size);
 		});
 
 		const partOne = sizes.sort((a, b) => b - a).filter((i, _) => i <= 100000).reduce((a, b) => a + b, 0);
@@ -45,7 +45,7 @@ const daySeven = () => {
 		console.log("Part One", partOne);
 		console.timeEnd("daySevenOne");
 
-		console.time("daySevenTwo")
+		console.time("daySevenTwo");
 		const TOTAL_SPACE_AVAILABLE = 70000000;
 		const REQUIRED_SPACE = 30000000;
 		const unusedSpace = TOTAL_SPACE_AVAILABLE -  sizes.sort((a, b) => b - a)[0];
@@ -55,7 +55,7 @@ const daySeven = () => {
 		console.timeEnd("daySevenTwo");
 	});
 
-}
+};
 
 const directorySize = (source: string, contents: string[], fileSystem: Map<string, string[]>) => {
 	let size = 0;
@@ -70,8 +70,8 @@ const directorySize = (source: string, contents: string[], fileSystem: Map<strin
 		}
 	}
 	return size;
-}
+};
 
 daySeven();
 
-export {}
+export {};

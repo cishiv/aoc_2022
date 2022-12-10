@@ -18,10 +18,10 @@ const dayNinePartOne = () => {
           
 				const points = [];
 
-				points.push({ x: hX, y: hY })
+				points.push({ x: hX, y: hY });
 				for(let i = 0; i < step; i++) {
 					move === "R" ? hX += 1 : move === "L" ? hX -= 1 : move === "D" ? hY -= 1 : move === "U" ? hY += 1 : null;
-					points.push({ x: hX, y: hY })
+					points.push({ x: hX, y: hY });
 				}
 				return points;
 			})
@@ -29,7 +29,7 @@ const dayNinePartOne = () => {
 		console.log("Part One", new Set(sim(path).map((i: Point) => `${i.x},${i.y}`)).size);
 		console.timeEnd("dayNineOne");
 	});
-}
+};
 
 const dayNinePartTwo = () => {
 	readInput(9, (_: any, d: string) => {
@@ -44,10 +44,10 @@ const dayNinePartTwo = () => {
           
 				const points = [];
 
-				points.push({ x: hX, y: hY })
+				points.push({ x: hX, y: hY });
 				for(let i = 0; i < step; i++) {
 					move === "R" ? hX += 1 : move === "L" ? hX -= 1 : move === "D" ? hY -= 1 : move === "U" ? hY += 1 : null;
-					points.push({ x: hX, y: hY })
+					points.push({ x: hX, y: hY });
 				}
 				return points;
 			})
@@ -55,13 +55,13 @@ const dayNinePartTwo = () => {
 
 
 		for (let i = 0; i < 9; i++) {
-			path = sim(path)
+			path = sim(path);
 		}
 
 		console.log("Part Two", new Set(path.map((i: Point) => `${i.x},${i.y}`)).size);
 		console.timeEnd("dayNineTwo");
 	});
-}
+};
 
 const sim = (path: {x: number, y: number}[]) => {
 
@@ -113,7 +113,7 @@ const sim = (path: {x: number, y: number}[]) => {
 
 	// console.log(knots.get(n - 1).pop());
 	return knot;
-}
+};
 
 dayNinePartOne();
 dayNinePartTwo();

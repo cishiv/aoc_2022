@@ -10,7 +10,7 @@ const dayFive = () => {
 			.reverse()[0]
 			.split("")
 			.map((i: string, idx: number) => parseInt(i) ? { idx, i: parseInt(i) } : { idx, i: -1 })
-			.filter((q: { idx: number, i: number } ) => q.i !== -1)
+			.filter((q: { idx: number, i: number } ) => q.i !== -1);
 
 		const indexMap = new Map<number, number>([...indicies].map((q: { idx: number, i: number } ) => [q.i, q.idx]));
 
@@ -28,7 +28,7 @@ const dayFive = () => {
 						return {
 							idx: idx0,
 							val: s
-						}
+						};
 					})
 					.filter((s: { idx: number, val: string }) => s.val.length > 0 && s.val.charCodeAt(0) > 64 && s.val.charCodeAt(0) < 91);
 			})
@@ -98,7 +98,7 @@ const dayFive = () => {
 		console.log("Part Two", partTwo);
 		console.timeEnd("day_five_part_two");
 	});
-}
+};
 
 dayFive();
 

@@ -1,5 +1,5 @@
 import { intersect, _Array } from "./utils/arrays";
-import { readInput } from "./utils/reader"
+import { readInput } from "./utils/reader";
 
 const dayFour = () => {
 	readInput(4, (_: any, d: string) => {
@@ -28,7 +28,7 @@ const dayFour = () => {
 		console.log("Part 1", partOne);
 		console.log("Part 2", partTwo);
 	});
-}
+};
 
 dayFour();
-export {}
+export {};
