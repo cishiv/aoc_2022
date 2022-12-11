@@ -71,16 +71,16 @@ const dayTenPartTwo = () => {
     		// the sprite is 3 pixels wide, we need to place it in the correct position in the pixels array
     		// one after the mid point
     		if (registerX + 1 <= 40) {
-    			pixels[registerX + 1] = "#";
+    			pixels[registerX + 1] = "█";
     		}
 
     		// one before the mid point
     		if (registerX - 1 >= 0) {
-    			pixels[registerX - 1] = "#";
+    			pixels[registerX - 1] = "█";
     		}
 
     		// the mid point
-    		pixels[registerX] = "#";
+    		pixels[registerX] = "█";
     	}
 
     	if (instr[0] === "noop") {
